@@ -3,7 +3,7 @@ import { Field, Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from "yup";
 import { useId } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchNewContact } from '../../redux/contactsOps';
+import { fetchNewContact } from '../../redux/contacts/operations';
 
 const FeedbackSchema = Yup.object().shape({
     name: Yup.string().min(3, 'Too short!').max(50, 'Too long!').required('Required'),
