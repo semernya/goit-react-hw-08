@@ -8,7 +8,7 @@ import css from "./App.module.css";
 // import { selectError, selectLoading } from "../../redux/contactsSlice";
 // import { useEffect } from 'react';
 // import { fetchContacts } from '../../redux/contactsOps';
-import { NavLink, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Layout from "../Layout/Layout";
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage'))
@@ -37,15 +37,9 @@ export default function App() {
     //   {error && <Error />}
     //   <ContactList />
     // </div>
+
     <Layout>
       <Suspense fallback={null}>
-        <nav className={css.nav}>
-          <NavLink to='/'>Home</NavLink>
-          <NavLink to='/register'>SignIn</NavLink>
-          <NavLink to='/login'>LogIn</NavLink>
-          <NavLink to='/contacts'>Contacts</NavLink>
-        </nav>
-
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/register" element={<RegistrationPage />} />

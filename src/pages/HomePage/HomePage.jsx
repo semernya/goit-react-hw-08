@@ -1,11 +1,12 @@
+import PageTitle from "../../components/PageTitle/PageTitle"
 
 export default function HomePage() {
     return (
-        <div>
-            Welcome to contacts manager {" "}
+        <PageTitle>
+            Welcome to PhoneBook {" "}
             <span role="img" aria-label="Greeting icon">
                 💁‍♀️
             </span>
-        </div>
+        </PageTitle>
     )
 }
