@@ -3,10 +3,15 @@ import axios from "axios";
 
 axios.defaults.baseURL = 'https://connections-api.goit.global/';
 
+const setToken = (token) => {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+}
+
 
 export const register = createAsyncThunk('auth/register', async (newUser, thunkAPI) => {
     try {
         const response = await axios.post('users/signup', newUser);
+        setToken(response.data.token);
         return response.data;
     } catch (error) {
         return thunkAPI.rejectWithValue('Error with registration!')
@@ -14,12 +19,10 @@ export const register = createAsyncThunk('auth/register', async (newUser, thunkA
 });
 
 
-
-
-
-export const logIn = createAsyncThunk('auth/login', async (_, thunkAPI) => {
+export const logIn = createAsyncThunk('auth/login', async (userData, thunkAPI) => {
     try {
-        const response = await axios.post('users/login');
+        const response = await axios.post('users/login', userData);
+        setToken(response.data.token);
         return response.data;
     } catch (error) {
         return thunkAPI.rejectWithValue('Error with log in!')
@@ -27,4 +30,12 @@ export const logIn = createAsyncThunk('auth/login', async (_, thunkAPI) => {
 });
 
 
-export const logOut = createAsyncThunk('', async () => { });
+export const logOut = createAsyncThunk('auth/logOut', async (_, thunkAPI) => {
+    try {
+        const response = await axios.post('users/logout');
+        setToken('');
+        return response.data;
+    } catch (error) {
+        return thunkAPI.rejectWithValue('Error with log out!')
+    }
+});

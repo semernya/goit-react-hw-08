@@ -33,7 +33,7 @@ export default function LoginForm() {
                 </div>
                 <div className={css.formGroup}>
                     <label className={css.label}>Password</label>
-                    <Field type='text' name='password' />
+                    <Field type='password' name='password'/>
                     <ErrorMessage name='password' component='span' />
                 </div>
                 <button type="submit" className={css.btn}>Log In</button>
