@@ -5,6 +5,7 @@ import PageTitle from "../../components/PageTitle/PageTitle";
 import { useEffect } from "react";
 import { fetchContacts } from "../../redux/contacts/operations";
 import { selectLoading } from "../../redux/contacts/selectors";
+import SearchBox from "../../components/SearchBox/SearchBox";
 
 export default function ContactsPage() {
 
@@ -20,6 +21,7 @@ export default function ContactsPage() {
             <PageTitle>PhoneBook</PageTitle>
             <ContactForm />
             {isLoading && <div>Please wait a minute...</div>}
+            <SearchBox />
             <ContactList />
         </div>
     )

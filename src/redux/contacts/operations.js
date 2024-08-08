@@ -6,7 +6,6 @@ axios.defaults.baseURL = 'https://connections-api.goit.global/'
 export const fetchContacts = createAsyncThunk('contacts/fetchContacts', async (_, thunkAPI) => {
     try {
         const response = await axios.get('contacts');
-        console.log(response.data);
         return response.data;
     } catch (error) {
         return thunkAPI.rejectWithValue('Error fetching data!');
