@@ -39,3 +39,25 @@ export const logOut = createAsyncThunk('auth/logOut', async (_, thunkAPI) => {
         return thunkAPI.rejectWithValue('Error with log out!')
     }
 });
+
+
+export const refreshUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const token = state.auth.token;
+    setToken(token);
+
+    try {
+        const response = await axios.get('users/current');
+        return response.data;
+    } catch (error) {
+        return thunkAPI.rejectWithValue('Error!')
+    }
+
+},
+    {
+        condition: (_, thunkAPI) => {
+            const state = thunkAPI.getState();
+            return state.auth.tiken !== null;
+        },
+    }
+)
