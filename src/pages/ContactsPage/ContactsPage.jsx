@@ -20,7 +20,7 @@ export default function ContactsPage() {
         <div>
             <PageTitle>PhoneBook</PageTitle>
             <ContactForm />
-            {isLoading && <div>Please wait a minute...</div>}
+            <div>{isLoading && 'Please wait a minute...'}</div>
             <SearchBox />
             <ContactList />
         </div>
