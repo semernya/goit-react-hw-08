@@ -57,7 +57,7 @@ export const refreshUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) 
     {
         condition: (_, thunkAPI) => {
             const state = thunkAPI.getState();
-            return state.auth.tiken !== null;
+            return state.auth.token !== null;
         },
     }
 )

@@ -18,11 +18,12 @@ const NotFoundPage = lazy(() => import('../../pages/NotFoundPage/NotFoundPage'))
 export default function App() {
 
   const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing);
+  
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  const isRefreshing = useSelector(selectIsRefreshing);
 
   return isRefreshing ?
     (<div>Refreshing user data, please wait...</div>) :
@@ -31,8 +32,8 @@ export default function App() {
         <Suspense fallback={null}>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/register" element={<RestrictedRoute component={<HomePage />} redirectTo='/' />} />
-            <Route path="/login" element={<RestrictedRoute component={<ContactsPage />} redirectTo='/contacts' />} />
+            <Route path="/register" element={<RestrictedRoute component={<RegistrationPage />} redirectTo='/' />} />
+            <Route path="/login" element={<RestrictedRoute component={<LoginPage />} redirectTo='/contacts' />} />
             <Route path="/contacts" element={<PrivateRoute component={<ContactsPage />} redirectTo='/login' />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
