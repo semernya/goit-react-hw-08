@@ -1,7 +1,9 @@
 .box {
+    font-family: 'Montserrat', sans-serif;
     margin-bottom: 20px;
 }
 
 .text {
     font-size: 14px;
+    margin-bottom: 10px;
 }
